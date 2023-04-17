@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Security.Cryptography;
 using System.ComponentModel;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AbimOdev
 {
@@ -19,6 +20,47 @@ namespace AbimOdev
         static void Main()
         {
 
+            string dosyayolu = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "belge.txt");
+            Console.WriteLine(dosyayolu);
+            if (File.Exists(dosyayolu))
+            {
+                string text = File.ReadAllText(dosyayolu);
+                if (!string.IsNullOrEmpty(text))
+                {
+                    YazdirmaFonk();
+                    Matematik();
+                    KoleksiyonFonk();
+                }
+                else
+                {
+                    Console.WriteLine("Dosya içi boş!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Boyle bi dosya yok kardes!");
+            }
+
+            Console.ReadLine();
+        }
+        static void DosyayaYaz(string yazilacakSatir, string dosyaAdi)
+        {
+            // Debug altinda text dosyasını ac
+
+            string dosyayolu = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{dosyaAdi}.txt");
+            StreamWriter file = new StreamWriter(dosyayolu);
+
+            //yazıyı yazdır
+            file.Write(yazilacakSatir);
+
+            //dosyayı kapat
+            file.Close();
+
+        }
+
+
+        static void Matematik()
+        {
             //MATEMATİK BAŞLAR
 
 
@@ -74,104 +116,95 @@ namespace AbimOdev
             //MATEMATİK BİTER
 
 
+        }
 
-
-            //txt dosyasının içeripini alcam
-            var dosyayolu = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "belge.txt");
-
-
-            //Uygulamanın çalıştığı dizine dosya açmak için burdan gidiyo işte calisiyo 
-
+        static void YazdirmaFonk()
+        {
+            string dosyayolu = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "belge.txt");
             string text = File.ReadAllText(dosyayolu);
-            //bos mudolu mu falan diye kontrol
-            if (!string.IsNullOrEmpty(text))
-            {
-                int uzunluk = text.Length;
-                string upper, lower;
-                upper = text.ToUpper();
-                lower = text.ToLower();
-                string string1 = text.Substring(0, 10);
-                string string2 = text.Substring(10, 20);
+            int uzunluk = text.Length;
+            string upper, lower;
+            upper = text.ToUpper();
+            lower = text.ToLower();
+            string string1 = text.Substring(0, 10);
+            string string2 = text.Substring(10, 20);
 
 
-                //compare karşılaştırma
-                var compare = string.Compare
-                    (string1, string2);
-                /*
-                 
-                 s1==s2 returns 0  
+            //compare karşılaştırma
+            var compare = string.Compare
+                (string1, string2);
+            /*
+
+             s1==s2 returns 0  
 s1>s2 returns 1  
 s1<s2 returns -1  
-                 */
-                //text olarak aynı mı farklı mı diye kontrol eder
+             */
+            //text olarak aynı mı farklı mı diye kontrol eder
 
-                //Concat = toplama işlemi
-                string string3 = text.Substring(20, 30);
-                string string4 = text.Substring(31, 40);
-                var concat = string.Concat(string3, string4);
-                var replace = string1.Replace("Lorem ipsu", "Umut");
+            //Concat = toplama işlemi
+            string string3 = text.Substring(20, 30);
+            string string4 = text.Substring(31, 40);
+            var concat = string.Concat(string3, string4);
+            var replace = string1.Replace("Lorem ipsu", "Umut");
 
-                /*
-                 Trim()
+            /*
+             Trim()
 Geçerli dizeden baştaki ve sondaki tüm boşluk karakterlerini kaldırır.
-                d
+            d
 Trim(Char[])
 Bir dizide belirtilen karakter kümesinin tüm baştaki ve sondaki oluşumlarını geçerli dizeden kaldırır.
 
 Trim(Char)
 Geçerli dizeden bir karakterin tüm baştaki ve sondaki örneklerini kaldırır.
-                
-                 */
-                //True false olarak döndürür
-                //işte bi string diğerini içeriyo mu diye 
-                //mesemla umut,umut yurduguül ----> s2 s1'i içeriyo o zaman true gibi
+
+             */
+            //True false olarak döndürür
+            //işte bi string diğerini içeriyo mu diye 
+            //mesemla umut,umut yurduguül ----> s2 s1'i içeriyo o zaman true gibi
 
 
 
 
-                string string5 = "   Merhaba Ben Umut     ";
-                //Baştan ve sondan karakter kaldırıyor
-                var trim = string5.Trim();
+            string string5 = "   Merhaba Ben Umut     ";
+            //Baştan ve sondan karakter kaldırıyor
+            var trim = string5.Trim();
 
-                string join = string.Join(string3, string4);
-                bool contains = string3.Contains(string4);
-                bool contains2 = string4.Contains(string3);
-                Console.WriteLine(trim);
-                Console.WriteLine($"Dosyada {uzunluk} tane karakter var.");
+            string join = string.Join(string3, string4);
+            bool contains = string3.Contains(string4);
+            bool contains2 = string4.Contains(string3);
+            Console.WriteLine(trim);
+            Console.WriteLine($"Dosyada {uzunluk} tane karakter var.");
 
-                char[] delimiterChars = { ' ', ',', '.', ':' };
-                string[] kelimeler = string3.Split(delimiterChars);
+            char[] delimiterChars = { ' ', ',', '.', ':' };
+            string[] kelimeler = string3.Split(delimiterChars);
 
-                foreach (var kelime in kelimeler)
-                {
-                    Console.WriteLine(kelime);
-                }
-
-
-                bool s3a = string3.StartsWith("A");
-                bool s3b = string3.EndsWith("A");
-                DosyayaYaz(Convert.ToString(s3b), "EndsWith.txt");
-                DosyayaYaz(text.Substring(0, 10), "Substring_0_10.txt");
-                DosyayaYaz(Convert.ToString(uzunluk), "Uzunluk.txt");
-                DosyayaYaz(concat + string2, "Replace.txt");
-                DosyayaYaz(upper, "ToUpper.txt");
-                DosyayaYaz(lower, "Tolower.txt");
-                DosyayaYaz(concat, "Concat.txt");
-                DosyayaYaz(Convert.ToString(compare), "Compare.txt");
-                DosyayaYaz(string5, "Trim");
-                DosyayaYaz(join, "Join.txt");
-                DosyayaYaz(contains + " " + contains2, "Contains.txt");
-
-            }
-
-            else
+            foreach (var kelime in kelimeler)
             {
-
-                Console.WriteLine("Boyle bi dosya yok kardes!");
+                Console.WriteLine(kelime);
             }
 
 
+            bool s3a = string3.StartsWith("A");
+            bool s3b = string3.EndsWith("A");
+            DosyayaYaz(Convert.ToString(s3b), "EndsWith.txt");
+            DosyayaYaz(text.Substring(0, 10), "Substring_0_10.txt");
+            DosyayaYaz(Convert.ToString(uzunluk), "Uzunluk.txt");
+            DosyayaYaz(concat + string2, "Replace.txt");
+            DosyayaYaz(upper, "ToUpper.txt");
+            DosyayaYaz(lower, "Tolower.txt");
+            DosyayaYaz(concat, "Concat.txt");
+            DosyayaYaz(Convert.ToString(compare), "Compare.txt");
+            DosyayaYaz(string5, "Trim");
+            DosyayaYaz(join, "Join.txt");
+            DosyayaYaz(contains + " " + contains2, "Contains.txt");
 
+
+        }
+
+        static void KoleksiyonFonk()
+        {
+            string dosyayolu = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "belge.txt");
+            string text = File.ReadAllText(dosyayolu);
             string cumle = text.Substring(0, 10);
             string[] word = cumle.Split(' ');
             List<string> words = new List<string>(word);
@@ -310,7 +343,7 @@ Geçerli dizeden bir karakterin tüm baştaki ve sondaki örneklerini kaldırır
             Console.WriteLine("---------------");
 
 
-            List<string> strings2 = new List<string>() { "Umut", "Oktay","Ömürcan","Aysel"};
+            List<string> strings2 = new List<string>() { "Umut", "Oktay", "Ömürcan", "Aysel" };
             int index = strings2.IndexOf("Umut");
             Console.WriteLine(index);
 
@@ -318,7 +351,7 @@ Geçerli dizeden bir karakterin tüm baştaki ve sondaki örneklerini kaldırır
             Console.WriteLine("---------------");
             Console.WriteLine("---------------");
 
-            List<string> kuzen = new List<string> {"Zehra","Aytuğ","Zeynep" };
+            List<string> kuzen = new List<string> { "Zehra", "Aytuğ", "Zeynep" };
             string[] strings9 = strings2.ToArray();
             string[] concatString = strings9.Concat(kuzen).ToArray();
 
@@ -335,26 +368,6 @@ Geçerli dizeden bir karakterin tüm baştaki ve sondaki örneklerini kaldırır
             {
                 Console.WriteLine("temizlendi!");
             }
-
-
-            Console.ReadLine();
         }
-        static void DosyayaYaz(string yazilacakSatir, string dosyaAdi)
-        {
-            // Debug altinda text dosyasını ac
-
-            string dosyayolu = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{dosyaAdi}.txt");
-            StreamWriter file = new StreamWriter(dosyayolu);
-
-            //yazıyı yazdır
-            file.Write(yazilacakSatir);
-
-            //dosyayı kapat
-            file.Close();
-
-        }
-
     }
-
-
 }
