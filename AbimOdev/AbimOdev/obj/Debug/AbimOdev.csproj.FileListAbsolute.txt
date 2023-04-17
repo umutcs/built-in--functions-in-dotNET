@@ -1,0 +1,8 @@
+C:\Users\Can\Desktop\AbimOdev\AbimOdev\bin\Debug\AbimOdev.exe.config
+C:\Users\Can\Desktop\AbimOdev\AbimOdev\bin\Debug\AbimOdev.exe
+C:\Users\Can\Desktop\AbimOdev\AbimOdev\bin\Debug\AbimOdev.pdb
+C:\Users\Can\Desktop\AbimOdev\AbimOdev\obj\Debug\AbimOdev.csproj.AssemblyReference.cache
+C:\Users\Can\Desktop\AbimOdev\AbimOdev\obj\Debug\AbimOdev.csproj.SuggestedBindingRedirects.cache
+C:\Users\Can\Desktop\AbimOdev\AbimOdev\obj\Debug\AbimOdev.csproj.CoreCompileInputs.cache
+C:\Users\Can\Desktop\AbimOdev\AbimOdev\obj\Debug\AbimOdev.exe
+C:\Users\Can\Desktop\AbimOdev\AbimOdev\obj\Debug\AbimOdev.pdb
