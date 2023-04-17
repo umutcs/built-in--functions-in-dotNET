@@ -131,7 +131,7 @@ namespace AbimOdev
 
 
             //compare karşılaştırma
-            var compare = string.Compare
+            int compare = string.Compare
                 (string1, string2);
             /*
 
@@ -144,8 +144,8 @@ s1<s2 returns -1
             //Concat = toplama işlemi
             string string3 = text.Substring(20, 30);
             string string4 = text.Substring(31, 40);
-            var concat = string.Concat(string3, string4);
-            var replace = string1.Replace("Lorem ipsu", "Umut");
+            string concat = string.Concat(string3, string4);
+            string replace = string1.Replace("Lorem ipsu", "Umut");
 
             /*
              Trim()
@@ -167,7 +167,7 @@ Geçerli dizeden bir karakterin tüm baştaki ve sondaki örneklerini kaldırır
 
             string string5 = "   Merhaba Ben Umut     ";
             //Baştan ve sondan karakter kaldırıyor
-            var trim = string5.Trim();
+            string trim = string5.Trim();
 
             string join = string.Join(string3, string4);
             bool contains = string3.Contains(string4);
@@ -178,7 +178,7 @@ Geçerli dizeden bir karakterin tüm baştaki ve sondaki örneklerini kaldırır
             char[] delimiterChars = { ' ', ',', '.', ':' };
             string[] kelimeler = string3.Split(delimiterChars);
 
-            foreach (var kelime in kelimeler)
+            foreach (string kelime in kelimeler)
             {
                 Console.WriteLine(kelime);
             }
@@ -211,7 +211,7 @@ Geçerli dizeden bir karakterin tüm baştaki ve sondaki örneklerini kaldırır
 
 
             words.Add("Merhaba");
-            foreach (var item in words)
+            foreach (string item in words)
             {
                 Console.WriteLine(item);
             }
@@ -257,19 +257,19 @@ Geçerli dizeden bir karakterin tüm baştaki ve sondaki örneklerini kaldırır
 
             string text5 = "Umut Yurdugül";
             words.Insert(0, text5);
-            foreach (var item in words)
-            {
+            foreach (string item in words)
+            {   
                 Console.WriteLine(item);
             }
 
 
             words.Remove("Merhaba");
-            foreach (var item in words)
+            foreach (string item in words)
             {
                 Console.WriteLine(item);
             }
             words.RemoveAll(x => x.Contains("A"));
-            foreach (var item in words)
+            foreach (string item in words)
             {
                 Console.WriteLine(item);
             }
@@ -278,14 +278,14 @@ Geçerli dizeden bir karakterin tüm baştaki ve sondaki örneklerini kaldırır
             words.RemoveAt(0);
 
 
-            foreach (var item in words)
+            foreach (string item in words)
             {
                 Console.WriteLine(item);
             }
 
             Console.WriteLine("---------------");
             words.Reverse();
-            foreach (var item in words)
+            foreach (string item in words)
             {
                 Console.WriteLine(item);
             }
@@ -307,14 +307,14 @@ Geçerli dizeden bir karakterin tüm baştaki ve sondaki örneklerini kaldırır
 
 
             strings.Sort();
-            foreach (var item in strings)
+            foreach (string item in strings)
             {
 
                 Console.WriteLine(item);
             }
             Console.WriteLine("---------------");
             strings.OrderBy(x => x.Contains("t"));
-            foreach (var item in strings)
+            foreach (string item in strings)
             {
 
                 Console.WriteLine(item);
@@ -323,17 +323,17 @@ Geçerli dizeden bir karakterin tüm baştaki ve sondaki örneklerini kaldırır
             Console.WriteLine("---------------");
 
 
-            var y = strings.ToArray();
+            string[] y = strings.ToArray();
 
 
-            foreach (var item in y)
+            foreach (string item in y)
             {
 
                 Console.WriteLine(item);
             }
 
-            var z = y.ToList();
-            foreach (var item in z)
+            List<string> z = y.ToList();
+            foreach (string item in z)
             {
 
                 Console.WriteLine(item);
@@ -355,7 +355,7 @@ Geçerli dizeden bir karakterin tüm baştaki ve sondaki örneklerini kaldırır
             string[] strings9 = strings2.ToArray();
             string[] concatString = strings9.Concat(kuzen).ToArray();
 
-            foreach (var item in concatString)
+            foreach (string item in concatString)
             {
                 Console.WriteLine(item);
             }
